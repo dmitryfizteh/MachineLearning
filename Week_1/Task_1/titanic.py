@@ -1,12 +1,18 @@
 import pandas
-print("Неделя №1. Задание №1 \n")
+print("Неделя №1. Задание №1")
 
 data = pandas.read_csv('./Data/titanic.csv', index_col='PassengerId')
 
-print("Решение задачи №1")
+print("\nРешение задачи №1")
 
 a1 = data['Sex'].value_counts()
 print("Ответ: %d %d" % (a1['male'],a1['female']))
+
+print("\nРешение задачи №2")
+
+a2 = data['Survived'].value_counts()
+#print("%d погибло, %d выжило" % (a2[0],a2[1]))
+print("Ответ: %d" % (round(a2[1]/(a2[0]+a2[1])*100)))
 
 
 """
