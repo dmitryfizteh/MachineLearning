@@ -1,4 +1,6 @@
 import pandas
+from scipy.stats.stats import pearsonr
+
 print("Неделя №1. Задание №1")
 data = pandas.read_csv('./Data/titanic.csv', index_col='PassengerId')
 
@@ -27,4 +29,25 @@ f = open('./Answers/3.txt', 'w')
 f.write("%.2f" % (round(a3[1]/(a3[1]+a3[2]+a3[3])*100,2)))
 f.close()
 
+print("\nРешение задачи №4")
+'''
+data = data['Age'].dropna()
+data = data.astype(int)
+print(data)
+'''
+a4_1 = data['Age'].mean()
+a4_2 = data['Age'].median()
+print("Ответ: %d %d" % (a4_1, a4_2))
+f = open('./Answers/4.txt', 'w')
+f.write("%d %d" % (a4_1, a4_2))
+f.close()
 
+print("\nРешение задачи №5")
+a5 = pearsonr(data['SibSp'], data['Parch'])
+#print('Коэффициент корреляции r= %0.2f, уровень значимости p = %0.3f.' % a5)
+print("Ответ: %0.2f" % a5[0])
+f = open('./Answers/5.txt', 'w')
+f.write("%0.2f" % a5[0])
+f.close()
+
+#print(data[data['Age'] < 5])
