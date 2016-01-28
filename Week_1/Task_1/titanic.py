@@ -35,8 +35,8 @@ data = data['Age'].dropna()
 data = data.astype(int)
 print(data)
 '''
-a4_1 = data['Age'].mean()
-a4_2 = data['Age'].median()
+a4_1 = (data['Age'].dropna()).mean()
+a4_2 = (data['Age'].dropna()).median()
 print("Ответ: %d %d" % (a4_1, a4_2))
 f = open('./Answers/4.txt', 'w')
 f.write("%d %d" % (a4_1, a4_2))
@@ -50,4 +50,8 @@ f = open('./Answers/5.txt', 'w')
 f.write("%0.2f" % a5[0])
 f.close()
 
-#print(data[data['Age'] < 5])
+print("\nРешение задачи №6")
+#print(data)
+print(data[data['Sex'] == "female"])
+
+
