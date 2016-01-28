@@ -6,14 +6,20 @@ data = pandas.read_csv('./Data/titanic.csv', index_col='PassengerId')
 print("\nРешение задачи №1")
 
 a1 = data['Sex'].value_counts()
+#print(a1)
 print("Ответ: %d %d" % (a1['male'],a1['female']))
 
 print("\nРешение задачи №2")
 
 a2 = data['Survived'].value_counts()
+#print(a2)
 #print("%d погибло, %d выжило" % (a2[0],a2[1]))
 print("Ответ: %d" % (round(a2[1]/(a2[0]+a2[1])*100)))
 
+print("\nРешение задачи №3")
+a3 = data['Pclass'].value_counts()
+#print(a3)
+print("Ответ: %d" % (round(a3[1]/(a3[1]+a3[2]+a3[3])*100)))
 
 """
 import numpy as np
