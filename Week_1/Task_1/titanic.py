@@ -30,11 +30,6 @@ f.write("%.2f" % (round(a3[1]/(a3[1]+a3[2]+a3[3])*100,2)))
 f.close()
 
 print("\nРешение задачи №4")
-'''
-data = data['Age'].dropna()
-data = data.astype(int)
-print(data)
-'''
 a4_1 = (data['Age'].dropna()).mean()
 a4_2 = (data['Age'].dropna()).median()
 print("Ответ: %d %d" % (a4_1, a4_2))
@@ -51,7 +46,35 @@ f.write("%0.2f" % a5[0])
 f.close()
 
 print("\nРешение задачи №6")
-#print(data)
-print(data[data['Sex'] == "female"])
+a6 = data[data['Sex'] == "female"]
+a6 = a6['Name']
 
+names = list()
+for (key,value) in enumerate(a6):
+    value = value.replace("Mrs. ","")
+    value = value.replace("Miss. ","")
+    value = value.replace("(","")
+    value = value.replace(")","")
+    value = value.replace('"','')
+    value = value.split(", ")
+    names_i = value[0]
+    names.append(value[0])
+    for name in value[1].split(" "):
+        names.append(name)
+
+# Функция поиска самого частого элемента в массиве
+def Freq2(b):
+  d = {}
+  m, i = 0, 0 # Максимальная частота и индекс в словаре
+  for x in b: # Пробегаем в цикле исходный массив
+    d[x] = d[x] + 1 if x in d else 1 # Если ключ уже есть, прибавляем 1, если нет, записываем 1
+    if d[x] > m:
+      m, i = d[x], x # Запоминаем максимум и его индекс
+  #return {i:m}
+  return i
+
+print("Ответ: %s" % (Freq2(names)))
+f = open('./Answers/6.txt', 'w')
+f.write("%s" % (Freq2(names)))
+f.close()
 
