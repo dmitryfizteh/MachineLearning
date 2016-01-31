@@ -2,6 +2,12 @@ import pandas
 from sklearn.tree import DecisionTreeClassifier
 
 print("Неделя №1. Задание №2")
+# Функция вывода ответа
+def write_result(result, index):
+    print("Ответ: " + str(result))
+    file = open("./Answers/" + str(index) + ".txt", "w")
+    file.write(result)
+    file.close()
 
 # Оставьте в выборке четыре признака: класс пассажира (Pclass), цену билета (Fare), возраст пассажира (Age) и его пол (Sex)
 usecols=['PassengerId', 'Pclass', 'Fare', 'Age', 'Sex', 'Survived']
@@ -37,7 +43,5 @@ imp.reverse()
 a1 = list.index(list(importances), imp[0])
 a2 = list.index(list(importances), imp[1])
 
-print("Ответ: %s %s" % (usecols[a1+1], usecols[a2+1]))
-f = open('./Answers/1.txt', 'w')
-f.write("%s %s" % (usecols[a1+1], usecols[a2+1]))
-f.close()
+result = str("%s %s" % (usecols[a1+1], usecols[a2+1]))
+write_result(result, 1)
